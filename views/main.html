@@ -1,0 +1,203 @@
+{% extends "base.html" %}
+{% block content_new %}
+    <!-- 
+
+    Email: <a href="mailto:zhecht7@gmail.com">zhecht7@gmail.com</a> <br><br>
+            <a href="https://www.linkedin.com/in/zack-hecht-b47253b5">LinkedIn Profile</a> <br><br>
+            <a href="https://github.com/zhecht">GitHub Profile</a>
+    -->
+    <div id="header">
+        <div id="name">Zack Hecht</div>
+        <div id="contact">
+            <a href="mailto:zhecht7@gmail.com">zhecht7@gmail.com</a>
+            <a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">LinkedIn Profile</a>
+            <a href="https://github.com/zhecht" target="_blank">GitHub Profile</a>
+        </div>
+    </div>
+    <div id="footer">
+        <a href="#" id='qualifications' onclick="click_link('qualifications');" class="active">Qualifications</a>
+        /
+        <a href="#" id='projects' onclick="click_link('projects');">Projects</a>
+        /
+        <a href="#" id='resume' onclick="click_link('resume');">Resume</a>
+    </div>
+    
+    <div id="qualifications_hidden" class="hidden">
+        <div id="objective" >
+            <span>Objective</span>
+            <div>
+                To secure a challenging position in a fast-paced and innovative setting, where past experiences along with a hunger to learn will contribute to the overall growth of the company.
+            </div>
+        </div>
+        <span>Qualifications</span>
+        <!-- <div>
+            <h3>Objective</h3>
+            <hr>
+        </div> -->
+        <table id="languages" class="tables" cellspacing='0'>
+          <tr>
+            <th>Languages</th>
+          </tr>
+          <tr><td>C/C++</td></tr>
+          <tr><td>Python</td></tr>
+          <tr><td>Perl</td></tr>
+          <tr><td>HTML</td></tr>
+          <tr><td>CSS</td></tr>
+          <tr><td>Javascript</td></tr>
+          <tr><td>JQuery</td></tr>
+          <tr><td>Java</td></tr>
+          <tr><td style="border-bottom:2px solid;">PHP</td></tr>
+        </table>
+        <table id="courses" class="tables" cellspacing='0'>
+          <tr>
+            <th>Relevent Coursework</th>
+          </tr>
+          <tr><td>Intro to Computer Security</td></tr>
+          <tr><td>Cryptography</td></tr>
+          <tr><td>Intro to Artificial Intelligence</td></tr>
+          <tr><td>Mobile App Development</td></tr>
+          <tr><td>Web Database Info &amp; Systems</td></tr>
+          <tr><td style="border-bottom:2px solid;">Operating Systems</td></tr>
+          <!--
+                <img src='static/pictures/c-logo.png' >
+                <img src='static/pictures/python.jpeg' >
+                <img src='static/pictures/php.png' >
+                <img src='static/pictures/css_html.png' style='width:120px;'>
+                <img src='static/pictures/java.jpg' >
+                <img src='static/pictures/js.png' style='width:70px;'>
+                <img src='static/pictures/jquery.png' > -->
+        </table>
+        
+    </div>
+    <div id="projects_hidden" class="hidden">
+        <span id="projects_title">Projects</span>
+        <div id="proj_nav">
+            <a href="#" class="prev" onclick="change_proj('prev');">&lt; Prev Proj &lt;</a>
+            <a href="#" class="next" onclick="change_proj('next');">&gt; Next Proj &gt;</a>
+        </div>
+        <div id="change_projects">
+            <a href="#"  class="active" id='professional' onclick="click_link('professional');">Professional Projects</a>
+            /
+            <a href="#" id='school' onclick="click_link('school');">School Projects</a>
+            /
+            <a href="#" id='personal' onclick="click_link('personal');">Personal Projects</a>
+        </div>
+        <div id="projects_body">
+
+            <input type=hidden id="curr_type" value="professional" />
+            <input type=hidden id="curr_proj" value="0" />
+
+            {% for proj in proj_totals %}
+                <input type=hidden id="{{proj.name}}_tot" value="{{proj.tot}}" />
+            {% endfor %}
+
+            {% for proj_type in projects %}
+              {% set first_loop = loop %}
+              {% for proj in proj_type.projects %}
+                <div class='proj' id="{{proj_type.type}}_{{loop.index0}}">
+                    <div style="width:100%">
+                      <h3 style='font-size:20px;' class='proj_name'>
+                      {% if proj.link != '' %}
+                        <a href='{{proj.link}}' target='_blank'>{{proj.name}}</a>
+                      {% else %}
+                        {{proj.name}}
+                      {% endif %}
+                      </h3>
+                      <h3 class='proj_date'>{{proj.date}}</h3>
+                      <hr>
+                    </div>
+                    <div class="desc_wrap" >
+                      <ul class='desc'>
+                        {% for li in proj.desc %}
+                          <li>{{li}}</li>
+                        {% endfor %}
+                      </ul>
+                    </div>
+                    <div class='pics'>
+                      <div class="nav">
+                        <a id='proj_prev' class='mob' href="#" onclick="change_pic('prev','{{proj_type.type}}');" hidden>&lt; Prev Pic &lt;</a>
+                        <a id='proj_next' class='mob' href="#" onclick="change_pic('next','{{proj_type.type}}');">&gt; Next Pic &gt;</a>
+                      </div>
+                      
+                      {% set second_loop = loop %}
+                      {% for img in proj.imgs %}
+                        <img src="static/pictures/{{img.src}}" class="pic_{{proj_type.type}}_{{second_loop.index0}}_{{loop.index0}} {{img.mob}}" 
+                        {% if loop.index0 != 0 %}
+                          hidden
+                        {% endif %}
+                        >
+                        <div class="img_desc pic_{{proj_type.type}}_{{second_loop.index0}}_{{loop.index0}} {{img.mob}}"
+                        {% if loop.index0 != 0 %}
+                          hidden
+                        {% endif %}
+                        >{{img.text}}</div>
+                      {% endfor %}
+                      <input type="hidden" id="tot_pics_{{proj_type.type}}_{{loop.index0}}" value="{{proj.tot_pics}}" />
+                      <input type="hidden" id="curr_pic_{{proj_type.type}}_{{loop.index0}}" value="0" />
+                    </div>
+                </div>
+              {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+    <div id="about_hidden" class="hidden" hidden>
+      <span >About</span>
+    </div>
+    <div id="resume_hidden" class="hidden">
+      <span>Resume</span>
+      <embed src="static/pictures/resume.pdf" width='90%' height="800">
+    </div>
+{% endblock %}
+
+{% block content %}
+
+    <img id="profile" src="static/pictures/profile.jpeg" hidden>
+    <div id="home" hidden>
+        <div>
+
+            <h3>Frameworks and Templates</h3>
+            <ul><li>Ember</li></ul>
+            <ul><li>Flask</li></ul>
+            <ul><li>Jinja2</li></ul>
+            <ul><li>Qt Creator</li></ul>
+        </div>
+        <div>
+            <p>To secure a challenging position in the field of computer programming further developing innovative and efficient computing practices in this ever-changing environment.</p>
+            <h3>Languages</h3>
+            <div id="leftLang">
+
+            </div>
+        </div>
+
+    </div>
+    <iframe id="resume" src="static/pictures/resume.pdf" hidden></iframe>
+
+    <div id="interests" hidden>
+        <div>
+            <h3>Sport Teams</h3>
+            <img src="static/pictures/yankees.png">
+            <img src="static/pictures/jets.png">
+            <img src="static/pictures/knicks.jpg">
+        </div>
+        <div>
+            <h3>Music</h3>
+            <p>Vulfpeck</p>
+            <p>Red Hot Chili Peppers</p>
+            <p>Jimi Hendrix</p>
+            <p>Stevie Wonder</p>
+            <p>The Meters</p>
+        </div>
+        <div>
+            <h3>Movies</h3>
+            <p>Unusual Suspects</p>
+            <p>Pulp Fiction</p>
+            <p>Momento</p>
+            <h3>TV</h3>
+            <p>Vinyl</p>
+            <p>Game of Thrones</p>
+            <p>True Detective</p>
+            <p>Freaks and Geeks</p>
+        </div>
+    </div>
+
+{% endblock %}
