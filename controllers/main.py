@@ -3,6 +3,7 @@ import json
 main_blueprint = Blueprint('main_blueprint', __name__, template_folder='views')
 
 BASE = "/home/zackhechtportfolio/portfolio/"
+BASE = ""
 def read_projects():
 	with open("{}static/projects.json".format(BASE)) as fh:
 		return json.loads(fh.read())
@@ -24,8 +25,8 @@ def get_all_projects(projects):
 			hide = "flex"
 			for pic in proj["pics"]:
 				css = "display: {};".format(hide)
-				if pic.find("mob") == -1:
-					css += "width: 500px;"
+				#if pic.find("mob") == -1:
+				#	css += "width: 500px;"
 				if pic.endswith("mp4"):
 					#html +=		"<iframe src='{}' style='display: {}'></iframe>".format(pic, hide)
 					html +=		"<video src='/static/pictures/{}' controls style='{}'></video>".format(pic, css)

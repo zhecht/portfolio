@@ -88,7 +88,7 @@ for (var i = 0; i < nav.length; ++i) {
 	}
 }
 
-var project_types = ["personal", "professional", "school"];
+var project_types = ["personal", "professional"];
 
 for (var t = 0; t < project_types.length; ++t) {
 	var proj_el = document.getElementById(project_types[t]);
