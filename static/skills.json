@@ -1,0 +1,37 @@
+{
+	"languages": [
+		"Python\t5",
+		"Perl\t5",
+		"C/C++\t3",
+		"Embedded C\t1",
+		"Android\t1",
+		"Java\t2",
+		"HTML\t5",
+		"CSS\t4",
+		"JavaScript\t4",
+		"JQuery\t3"
+	],
+	"os": [
+		"Linux (Ubuntu)\t4",
+		"Linux (Debian)\t5",
+		"Linux (ElementaryOS)\t5",
+		"Linux (Kali)\t2",
+		"MacOS\t4",
+		"Windows 7 & 10\t2"
+	],
+	"dbs": [
+		"Cassandra\t4",
+		"PostgreSQL\t3",
+		"MySQL\t3",
+		"Lucene\t2",
+		"Elastic Search\t3"
+	],
+	"other": [
+		"Flask\t5",
+		"Jinja\t5",
+		"Vue.js\t3",
+		"Qt/QML\t3",
+		"Ember\t2",
+		"Angular\t2"
+	]
+}

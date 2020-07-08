@@ -1,41 +1,120 @@
-[
-  {
-    'name':'OnRoto Fantasy Sports',
-    'link':'http://football1.onroto.com/football/webtest/m.team_home.pl?ORIF+2&session_id=DzDwJslLgpCUlyWfgNOlv0NrfYe',
-    'date':'Summer \'16 - Winter \'17',
-    'desc':['Converted the essential pages on a fantasy website into mobile friendly versions.','Rewrote all the Java functionality in Javascript. With only a few select browsers still supporting Java, it seemed incompatible to have some pages still rely on it.'],
-    'tot_pics':'4',
-    'imgs':
-    [
-      {'src':'trans_mob.png','class':'mob pic_professional_0_0','text':'Transactions (Mobile)'},
-      {'src':'trans_desktop.png','class':'desktop pic_professional_0_1','text':'Transactions (Desktop)'},
-      {'src':'team_home_mob.png','class':'mob pic_professional_0_2','text':'Team Home (Mobile)'},
-      {'src':'team_home_desktop.png','class':'desktop pic_professional_0_3','text':'Team Home (Desktop)'}
-    ]
-  },
-  {
-    'name':'The Purple Ones',
-    'link':'','date':'Fall \'16',
-    'desc':['Managed the frontend and backend for a Prince coverband running on Wordpress.','Reduced the load time in half by compressing images, optimizing javascript, and removing unnecessary styles and scripts.'],
-    'tot_pics':'2',
-    'imgs':
-    [
-      {'src':'tpo2.png','class':'pic_professional_1_0','text':''},
-      {'src':'tpo1.png','class':'pic_professional_1_1','text':''}
-    ]
-  },
-  {
-    'name':'Elite Lessons',
-    'date':'Startup Summer \'15',
-    'link':'',
-    'desc':['Researched and practiced the necessary languages, from scratch, to make a professional website for a startup company.','With the help of Parse to handle the backend database work, more focus was placed on the frontend and user model/view/controller interaction.','Implemented a commerce section, providing insight into important security exploits and their defenses on the modern day web.'],
-    'tot_pics':'4',
-    'imgs':
-    [
-      {'src':'EL1.png','class':'pic_professional_2_0','text':''},
-      {'src':'EL2.png','class':'pic_professional_2_1','text':''},
-      {'src':'EL3.png','class':'pic_professional_2_2','text':''},
-      {'src':'EL4.png','class':'pic_professional_2_3','text':''}
-    ]
-  }
-]
+{
+	"personal": [
+		{
+			"site": "https://rhcptabs.com",
+			"title": "rhcptabs.com",
+			"pics": [
+				"rhcptabs_home.png",
+				"rhcptabs.png"
+			],
+			"pics_desc": [
+				"Home Page",
+				"Album Page"
+			],
+			"summary": [
+				"Gathered a collection of instrumental tabs for The Red Hot Chili Peppers.",
+				"A quick project like this was a perfect opportunity to work with Vue.js for the first time.",
+				"Featured on RHCP's main subreddit sidebar (~15K views per month)."
+			]
+		},
+		{
+			"title": "Adalyze",
+			"pics": [
+				"adalyze_frame.png",
+				"adalyze_success.png"
+			],
+			"pics_desc": [
+				"Example still frame",
+				"Successful match found"
+			],
+			"summary": [
+				"Computer Vision video analyzer that calculates the optimal location for ad placement in professional sport games.",
+				"This project was an amazing introduction into OpenCV, Computer Vision, Numpy, and video processing."
+			]
+		},
+		{
+			"site": "https://chrome.google.com/webstore/detail/trade-value-calculator/menkeeamkaboflpmlachemgcdgemjadh",
+			"title": "Trade Value Calculator",
+			"pics": [
+				"trade_calc_demo.mp4",
+				"tradevalue.png"
+			],
+			"pics_desc": [
+				"Demo",
+				""
+			],
+			"summary": [
+				"Interactive Chrome and Firefox extension that uses professional trade ranks to make fantasy football online trading effortless.",
+				"(>5000 downloads during the season)"
+			]
+		},
+		{
+			"title": "MalWear",
+			"pics": [
+				""
+			],
+			"pics_desc": [
+				""
+			],
+			"summary": [
+				"Developed an online ecommerce store to sell personal Chanel products.",
+				"This project provided insight into safe security practices and invaluable retail experience."
+			]
+		}
+	],
+	"professional": [
+		{
+			"title": "OnRoto Fantasy Sports",
+			"pics": [
+				"team_home_mob.png",
+				"team_home_desktop.png",
+				"trans_mob.png",
+				"trans_desktop.png"
+			],
+			"pics_desc": [
+				"Team Home page (mobile)",
+				"Team Home page (desktop)",
+				"Transactions page (mobile)",
+				"Transactions page (desktop)"
+			],
+			"summary": [
+				"Planned and implemented a mobile UX.",
+				"Replaced all existing Java functionality with JavaScript. With Java being depreciated across the web, it seemed unreliable to have some pages still rely on it."
+			]
+		},
+		{
+			"title": "The Purple Ones",
+			"pics": [
+				"tpo2.png",
+				"tpo1.png"
+			],
+			"pics_desc": [
+				"Landing Screen",
+				"Updated Song List"
+			],
+			"summary": [
+				"Managed the frontend and backend for a Prince cover band running on Wordpress.",
+				"Reduced the load time by 50% by compressing images, optimizing JavaScript, and removing unnecessary styles and scripts."
+			]
+		},
+		{
+			"title": "Elite Lessons",
+			"pics": [
+				"EL1.png",
+				"EL2.png",
+				"EL3.png",
+				"EL4.png"
+			],
+			"pics_desc": [
+				"Landing Page",
+				"Search Page",
+				"Profile Page",
+				"Appointment Page"
+			],
+			"summary": [
+				"Researched and practiced the necessary languages, from scratch, to make a professional website for a startup company.",
+				"With the help of Parse to handle the backend database, more focus could be placed on learning HTML/CSS/JS and the frontend."
+			]
+		}
+	]
+}

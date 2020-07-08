@@ -1,13 +1,86 @@
 from flask import *
-main = Blueprint('main', __name__, template_folder='views')
+import json
+main_blueprint = Blueprint('main_blueprint', __name__, template_folder='views')
 
-projects = [{'type':'professional','projects':[{'name':'OnRoto Fantasy Sports','link':'http://football1.onroto.com/football/webtest/m.team_home.pl?ORIF+2&session_id=guest','date':'May \'16 - May \'17','desc':['Converted the essential pages on a fantasy website into mobile friendly versions.','Rewrote all the Java functionality in Javascript. With only a few select browsers still supporting Java, it seemed incompatible to have some pages still rely on it.'],'tot_pics':'4','imgs':[{'src':'trans_mob.png','mob':'mob','text':'Transactions (Mobile)'},{'src':'trans_desktop.png','mob':'','text':'Transactions (Desktop)'},{'src':'team_home_mob.png','mob':'mob','text':'Team Home (Mobile)'},{'src':'team_home_desktop.png','mob':'','text':'Team Home (Desktop)'}]},{'name':'The Purple Ones','link':'','date':'Fall \'16','desc':['Managed the frontend and backend for a Prince coverband running on Wordpress.','Reduced the load time in half by compressing images, optimizing javascript, and removing unnecessary styles and scripts.'],'tot_pics':'2','imgs':[{'src':'tpo2.png','mob':'','text':'Home Page'},{'src':'tpo1.png','mob':'','text':'Discography Page'}]},{'name':'Elite Lessons','date':'Startup Summer \'15','link':'','desc':['With the help of Parse to handle the backend database work, more focus was placed on the frontend and user model/view/controller interaction.','Implemented a commerce section, providing insight into important security exploits and their defenses on the modern day web.'],'tot_pics':'4','imgs':[{'src':'EL1.png','mob':'','text':'Home Page'},{'src':'EL2.png','mob':'','text':'Coaching Search Page'},{'src':'EL3.png','mob':'','text':'Booking Page'},{'src':'EL4.png','mob':'','text':'Appointment/Email Page'}]}]},{'type':'school','projects':[{'name':'One-Up','link':'','date':'University of Michigan W\'16','desc':['Developed an iOS App that let friends compete with one another under fair voting conditions','Users could also interact by browsing or voting on contests, all while staying anonymous'],'tot_pics':'4','imgs':[{'src':'oneup4.png','mob':'mob','text':'Login Page'},{'src':'oneup2.png','mob':'mob','text':'Front Page'},{'src':'oneup1.png','mob':'mob','text':'Contest Page'},{'src':'oneup3.png','mob':'mob','text':'Voting Page'}]},{'name':'Search Engine','date':'University of Michigan F\'15','link':'','desc':['Utilized Hadoop\'s MapReduce source code to score a large set of documents based on various factors including term frequency, PageRank, and Inverse Document Frequency.','Cosine similarity was calculated between the user\'s search query and each indexed document. The site returned document hits in descending order of similarity.'],'tot_pics':'2','imgs':[{'src':'se2.png','text':'Rankings Page','mob':''},{'src':'se1.png','text':'Signup Page','mob':''}]},{'name':'Multi-Threaded File System','link':'','date':'University of Michigan W\'16','desc':['Created a multi-threaded system where clients could request a session over a socket and modify directories or files that they owned.','Followed good security practices like encrypting the data that was sent over the socket and adding sequence numbers to sessions all in the effort to protect against nefarious requests.'],'tot_pics':'2','imgs':[{'src':'fs1.png','mob':'','text':'File System Interaction'},{'src':'fs2.png','mob':'','text':'Directory Overview'}]}]},{'type':'personal','projects':[{'name':'livevulf.com','link':'','date':'Winter\'16','desc':['Hosted a social media feed site using cron jobs for a favorite band of mine.'],'tot_pics':'2','imgs':[{'src':'livevulf1_opt.png','text':'Home Page','mob':''},{'src':'livevulf2.png','text':'Discography Page','mob':''}]},{'name':'Museeks','date':'Winter \'16','link':'','desc':['Constructed a graph that linked similar artists to a user\'s search query.'],'tot_pics':'2','imgs':[{'src':'museeks1.png','mob':'','text':'Search Page'},{'src':'museeks2.png','mob':'Graph View','text':''}]},{'name':'Today\'s Parlay\'s','date':'Winter \'15','link':'','desc':['Combined three XML feeds to provide a daily update of reddit, sport lines, and weather.','Helped further my insight into smart Xpath and Ajax practices.'],'tot_pics':'1','imgs':[{'src':'betting.png','mob':'','text':'Reddit, Weather, and Sport Lines'}]}]}]
+BASE = "/home/zackhechtportfolio/portfolio/"
+def read_projects():
+	with open("{}static/projects.json".format(BASE)) as fh:
+		return json.loads(fh.read())
 
-proj_totals = [{'name':'professional','tot':'3'},{'name':'school','tot':'3'},{'name':'personal','tot':'3'}]
+def read_skills():
+	with open("{}static/skills.json".format(BASE)) as fh:
+		return json.loads(fh.read())
 
+def get_all_projects(projects):
+	all_html = ""
+	css = ""
+	for which in ["personal", "professional"]:
+		html = "<div id='{}' {}>".format(which, css)
+		css = "" if which == "personal" else "style='display: none'"
+		for proj in projects[which]:
+			html += "<div class='project'>"
+			html += 	"<div class='left'>"
+			html += 		"<div class='pics'>"
+			hide = "flex"
+			for pic in proj["pics"]:
+				css = "display: {};".format(hide)
+				if pic.find("mob") == -1:
+					css += "width: 500px;"
+				if pic.endswith("mp4"):
+					#html +=		"<iframe src='{}' style='display: {}'></iframe>".format(pic, hide)
+					html +=		"<video src='/static/pictures/{}' controls style='{}'></video>".format(pic, css)
+				else:
+					html +=		"<img src='/static/pictures/{}' style='{}' />".format(pic, css)
+				hide = "none"
+			html += 		"</div>"
+			html += 		"<div class='desc'>"
+			html +=				"<button style='left:0;'>&lt;</button>"
+			html +=				"<button style='right:0;'>&gt;</button>"
+			html +=				"<span>{}</span>".format(proj["pics_desc"][0])
+			html += 		"</div>"
+			html += 	"</div>"
+			html += 	"<div class='right'>"
+			html +=			"<div class='title'>"
+			if proj.get("site"):
+				html +=			"<a href='{}'>{}</a>".format(proj.get("site"), proj["title"])
+			else:
+				html +=			proj["title"]
+			html +=			"</div>"
+			html +=			"<div class='list'>"
+			for summary in proj["summary"]:
+				html +=			"<div><span class='circle'></span>{}</div>".format(summary)
+			html += 		"</div>"
+			html += 	"</div>"
+			html += "</div>"
+		html += "</div>"
+		all_html += html
+	return all_html
 
+def skill_tables(skills):
+	html = ""
+	for key in skills:
+		css = "" if key == "languages" else "style='display: none'"
+		html += "<div id='{}' {}>".format(key, css)
+		html += "	<div class='table'>"
+		for skill in skills[key]:
+			skill, rank = skill.split("\t")
+			rank = float(rank)
+			html += 	"<div class='row'>"
+			html +=			"<div>{}</div>".format(skill)
+			html += 		"<div>"
+			for i in range(5):
+				active = "circle active" if i < rank else "circle"
+				html += 		"<span class='{}'></span>".format(active)
+			html += 		"</div>"
+			html += 	"</div>"
+		html += "	</div>"
+		html += "</div>"
+	return html
 
-@main.route('/')
+@main_blueprint.route('/',methods=["GET"])
 def main_route():
-	return render_template("main.html",projects=projects,proj_totals=proj_totals)
-
+	projects = read_projects()
+	skills = read_skills()
+	all_projects_html = get_all_projects(projects)
+	skill_table_html = skill_tables(skills)
+	return render_template("main.html", all_projects=all_projects_html, project_json=projects, skills_table=skill_table_html)

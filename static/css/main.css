@@ -1,0 +1,199 @@
+
+body {
+	margin: 0;
+}
+
+#content {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 50px;
+}
+
+#header {
+	display: flex;
+	color: rgb(232, 230, 227);
+	background-color: rgba(0, 0, 0, 0);
+	background-image: linear-gradient(to left, rgb(27, 30, 31), rgb(50, 55, 57));
+}
+
+#header div {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	padding: 20px 0;
+}
+
+#header a {
+	padding-right: 50px;
+	flex: 1;
+}
+
+h1,h4 {
+	margin:0;
+	padding-left: 50px;
+}
+
+#resume, #about, #projects, #skills, #professional, #school {
+	text-align: center;
+	display: none;
+	flex-direction: column;
+}
+
+#about, #personal {
+	display: flex;
+	flex-direction: column;
+}
+
+.project {
+	display: flex;
+	width: 70%;
+	margin-left: 15%;
+	margin-top: 2%;
+}
+
+.project img, .project video {
+	max-height: 300px;
+}
+
+.project button {
+	font-size: 24px;
+	background-color: #fff;
+	border: none;
+	outline: none;
+	position: absolute;
+}
+
+.project .desc {
+	position: relative;
+	height:35px;
+}
+
+.project button.disabled {
+	color: #f1f1f1;
+}
+.project button.disabled:hover {
+	cursor: not-allowed;
+}
+
+.project button::-moz-focus-inner {
+	border: none;
+}
+
+.project button:hover {
+	cursor:pointer;
+}
+
+.project .pics {
+	display: flex;
+	justify-content: center;
+}
+
+.project .left {
+	width: 500px;
+	display: inline-table;
+}
+
+.project .right {
+	text-align: left;
+	padding-left: 50px;
+}
+
+.project .title {
+	font-size: 30px;
+	height: 40px;
+}
+
+.project .list {
+	display: flex;
+	flex-direction: column;
+}
+
+.project .list div {
+	margin-top: 30px;
+}
+
+#skills .table {
+	width: 30%;
+	margin-left: 35%;
+	text-align: center;
+	border: 1px solid;
+	border-bottom: 0px;
+}
+
+#skills .table .row {
+	display: flex;
+	border-bottom: 1px solid;
+	padding: 10px 0;
+}
+
+#skills .table .row div {
+	flex: 1;
+}
+
+.circle {
+	border-radius: 100%;
+	border: 1px solid;
+	display: inline-block;
+	margin-right: 20px;
+}
+
+#skills .circle {
+	width: 12px; height: 12px;
+}
+
+#projects .circle {
+	width: 7px; height: 7px;
+}
+
+.circle.active {
+	background-color: green;
+}
+
+#about img {
+	border-radius: 100%;
+	margin: 20px 0;
+}
+
+.description {
+	width: 600px;
+	margin-left: calc(calc(100% - 600px) / 2);
+}
+
+#resume embed {
+	width: 700px;
+	height: 800px;
+	margin-left: calc(calc(100% - 700px) / 2);
+}
+
+.nav {
+	display: flex;
+	justify-content: center;
+	width: 50%;
+	margin-left: 25%;
+}
+
+#projects_nav, #skills_nav {
+	width: 30%;
+	margin-left: 35%;
+}
+
+.nav button {
+	background-color: #fff;
+	border: none;
+	outline: none;
+	font-size: 20px;
+	padding: 25px 0;
+	flex: 1;
+}
+
+.nav button::-moz-focus-inner {
+	border: none;
+}
+
+.nav button.active {
+	text-decoration: underline;
+}
+
+.nav button:hover {
+	cursor: pointer;
+}
