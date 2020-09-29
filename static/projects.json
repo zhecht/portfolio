@@ -1,6 +1,27 @@
 {
 	"personal": [
 		{
+			"site": "https://www.dropoffballot.com",
+			"title": "dropoffballot.com",
+			"pics": [
+				"dropoffballot.png",
+				"dropoffballot2.png",
+				"dropoffballot3.png",
+				"dropoffballot4.png"
+			],
+			"pics_desc": [
+				"USA View",
+				"MI View",
+				"Ann Arbor View",
+				"Dropbox View"
+			],
+			"summary": [
+				"Created the first country-wide ballot dropbox and dropoff locator for the upcoming Nov 2020 General Election.",
+				"Gained invaluable first-time experience with mapping architecture (ArcGIS, Map Tile Serving, and much more).",
+				"Innovated lots of creative workarounds to avoid paying Google's expensive Map API fees."
+			]
+		},
+		{
 			"site": "https://rhcptabs.com",
 			"title": "rhcptabs.com",
 			"pics": [

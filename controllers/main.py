@@ -1,9 +1,12 @@
 from flask import *
+import os
 import json
+
 main_blueprint = Blueprint('main_blueprint', __name__, template_folder='views')
 
-BASE = "/home/zackhechtportfolio/portfolio/"
 BASE = ""
+if os.path.exists("/home/zackhechtportfolio/portfolio"):
+	BASE = "/home/zackhechtportfolio/portfolio/"
 def read_projects():
 	with open("{}static/projects.json".format(BASE)) as fh:
 		return json.loads(fh.read())
