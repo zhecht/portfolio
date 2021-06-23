@@ -7,33 +7,36 @@
 	</head>
 	<body>
 		<div id="header">
-			<div id="title">
-				<h1>Zack Hecht</h1>
-				<h4>zhecht7@gmail.com</h4>
+			<div><h1>Zack Hecht</h1></div>
+			<div id="linksDiv">
+				<a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">
+					<img src="/static/pictures/linkedin.png" alt="LinkedIn" />
+				</a>
+				<a href="https://github.com/zhecht?tab=repositories" target="_blank">
+					<img src="/static/pictures/github.png" alt="Github" />
+				</a>
 			</div>
-			<div id="links_div">
-				<a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">LinkedIn Profile</a>
-				<a href="https://github.com/zhecht?tab=repositories" target="_blank">GitHub Profile</a>
-			</div>
-		</div>
-		<div id="content">
-			<div id="main_nav" class="nav">
-				<button>Resume</button>
+			<h4>zhecht7@gmail.com</h4>
+			<div id="nav">
 				<button class="active">About</button>
 				<button>Skills</button>
 				<button>Projects</button>
+				<button>Resume</button>
 			</div>
+		</div>
+		<div id="content">
+			
 			<div id="about">
-				<div class="description">
+				<div>
 					Hi, welcome to my page!
 				</div>
-				<div><img src="/static/pictures/profile.jpeg" width="300" /></div>
+				<div><img src="/static/pictures/profile.jpeg"/></div>
 				<div class="description">
-					I graduated from the University of Michigan College of Engineering and have a few years of experience in the industry as a Software Engineer.
+					I graduated from the University of Michigan College of Engineering in 2016 and have since gained invaluable experience as a Junior and now Senior Engineer in numerous fields of Software.
 					<br><br>
 					Armed with a never-ending curiosity, an eagerness to learn, and a passion to create, Computer Science was a route I never doubted following.
 					<br><br>
-					In my free time, I love to listen to records, garden, and play with my dood, <a href="https://i.imgur.com/GBAOuob.jpg">Bonzo</a>. I also enjoy integrating programming into my hobbies, interests, and daily life as much as possible. I find that this is a great way to keep my love to code, while also learning new technology and frameworks along the way.
+					In my free time, I love to listen to records, garden, and play with my dood, <a href="https://i.imgur.com/GBAOuob.jpg">Bonzo</a>. I also enjoy integrating programming into my hobbies, interests, and daily life as much as possible as you will notice from my Projects page. I find that this is a great way to keep my love for coding, while learning new technology and frameworks along the way.
 				</div>
 			</div>
 			<div id="projects">
@@ -41,26 +44,73 @@
 					<button class="active">Personal</button>
 					<button>Professional</button>
 				</div>
-				{{ all_projects | safe }}
+				{% for project in projects["personal"] %}
+					<div id="{{project.title}}" class="project slideshow">
+						{% for img in project.pics %}
+							<div class="slides">
+								{% if img.endswith("mp4") %}
+									<video src="/static/pictures/{{img}}" controls />
+								{% else %}
+									<img src="/static/pictures/{{img}}" />
+								{% endif %}
+							</div>
+						{% endfor %}
+						<a class="prev" onclick="plusSlides(this, -1)">❮</a>
+						<a class="next" onclick="plusSlides(this, 1)">❯</a>
+						<div class="captionContainer">
+							<p class="caption"></p>
+						</div>
+						<div class="row">
+						{% for img in project.pics %}
+							<div class="miniPic">
+								<img src="/static/pictures/{{img}}" alt="{{project.pics_desc[loop.index0]}}" onclick="currentSlide('{{project.title}}', {{loop.index}})" />
+							</div>
+						{% endfor %}
+						</div>
+					</div>
+					<div class="description">
+						{% if "site" in project %}
+							<h2><a target="_blank" href="{{project.site}}">{{project.title}}</a></h2>
+						{% else %}
+							<h2>{{project.title}}</h2>
+						{% endif %}
+						<ul>
+						{% for sum in project.summary %}
+							<li>{{sum}}</li>
+						{% endfor %}
+						</ul>
+					</div>
+				{% endfor %}
 			</div>
 			<div id="skills">
-				<div id="skills_nav" class="nav"  style="display: none;">
-					<button class="active">Languages</button>
-					<button>OS</button>
-					<button>DBs</button>
-					<button>Other</button>
-				</div>
-				<div style="font-size: 14px; margin-bottom: 20px">
+				<div style="width: 100%;display: flex;justify-content: center;align-items: center;">
 					<i>Ranked on experience, last use, and overall knowledge</i>
 				</div>
-				{{ skills_table | safe }}
+				{% for skillType in skills %}
+					<div class="skill">
+						<h2>{{skillType}}</h2>
+						{% for skillRow in skills[skillType] %}
+							<div class="skillDiv">
+								<div>{{skillRow["data"]}}</div>
+								<div class="ratingDiv">
+								{% for rating in range(skillRow["rating"]) %}
+									<svg width="14" height="14" viewBox="0 0 512 512" xml:space="preserve" style="padding: 0px 1px;"><polygon fill="#FFEA00" stroke="#C1AB60" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 29.274,197.007 188.165,173.919 "></polygon></svg>
+								{% endfor %}
+								{% for rating in range(skillRow["rating"], 5) %}
+									<svg width="14" height="14" viewBox="0 0 512 512" xml:space="preserve" style="padding: 0px 1px;"><polygon fill="#D2D2D2" stroke="#686868" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 29.274,197.007 188.165,173.919 "></polygon></svg>
+								{% endfor %}
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				{% endfor %}
 			</div>
 			<div id="resume">
 				<embed src="/static/resume.pdf" />
 			</div>
 		</div>
 		<script>
-			var data = {{project_json | tojson | safe}};
+			var data = {{projects | tojson | safe}};
 		</script>
 		<script src="/static/js/main.js"></script>
 	</body>

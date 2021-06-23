@@ -4,21 +4,37 @@
 			"site": "https://www.dropoffballot.com",
 			"title": "dropoffballot.com",
 			"pics": [
+				"dropoffballot4.png",
 				"dropoffballot.png",
 				"dropoffballot2.png",
-				"dropoffballot3.png",
-				"dropoffballot4.png"
+				"dropoffballot3.png"
 			],
 			"pics_desc": [
+				"Dropbox View",
 				"USA View",
 				"MI View",
-				"Ann Arbor View",
-				"Dropbox View"
+				"Ann Arbor View"
 			],
 			"summary": [
-				"Created the first country-wide ballot dropbox and dropoff locator for the upcoming Nov 2020 General Election.",
-				"Gained invaluable first-time experience with mapping architecture (ArcGIS, Map Tile Serving, and much more).",
-				"Innovated lots of creative workarounds to avoid paying Google's expensive Map API fees."
+				"Created the first country-wide ballot dropbox and dropoff locator for the Nov 2020 General Election. Scrapped location data from State Gov't sites but mostly had to go County-by-County.",
+				"After the election, tracked Restrictive bills that proposed to weaken or obstruct voting powers.",
+				"Experience Gained: First time working with mapping architecture (ArgGIS, Map Tile Serving, Openmaps, and more). Maintained 2 instances from Linode to serve map tiles to my site.",
+				"Optimization Example: To limit the amount of map requests (and $$), I downloaded midpoint coordinates from all the States. Everytime a user scrolls, instead of querying for the current location, I instead used the Haversine equation to calculate the 5 nearest States."
+			]
+		},
+		{
+			"title": "Adalyze",
+			"pics": [
+				"adalyze_success.png",
+				"adalyze_frame.png"
+			],
+			"pics_desc": [
+				"Successful match found",
+				"Example still frame"
+			],
+			"summary": [
+				"Computer Vision video analyzer that calculated the optimal location for ad placement in professional sport games.",
+				"Experience Gained: Amazing introduction into the Computer Vision environment (OpenCV, Numpy, Video Processing, and multithreading). Also, my first personal project working with 3rd party Cloud Providers. I purchased an EC-2 AWS cluster to offload a bulk of the GPU-heavy work."
 			]
 		},
 		{
@@ -34,23 +50,8 @@
 			],
 			"summary": [
 				"Gathered a collection of instrumental tabs for The Red Hot Chili Peppers.",
-				"A quick project like this was a perfect opportunity to work with Vue.js for the first time.",
-				"Featured on RHCP's main subreddit sidebar (~15K views per month)."
-			]
-		},
-		{
-			"title": "Adalyze",
-			"pics": [
-				"adalyze_frame.png",
-				"adalyze_success.png"
-			],
-			"pics_desc": [
-				"Example still frame",
-				"Successful match found"
-			],
-			"summary": [
-				"Computer Vision video analyzer that calculates the optimal location for ad placement in professional sport games.",
-				"This project was an amazing introduction into OpenCV, Computer Vision, Numpy, and video processing."
+				"Featured on RHCP's main subreddit sidebar (~15K views per month).",
+				"Experienced Gained: Vue.js was a new framework that I wanted to experiment with, so a quick project like this was the perfect test-run."
 			]
 		},
 		{
@@ -65,8 +66,10 @@
 				""
 			],
 			"summary": [
-				"Interactive Chrome and Firefox extension that uses professional trade ranks to make fantasy football online trading effortless.",
-				"(>5000 downloads during the season)"
+				"Interactive Chrome and Firefox extension that uses professional trade ranks to make fantasy football trading effortless.",
+				"(>5000 downloads during the season)",
+				"Experience Gained: Published an Extension (or Add-On in FireFox's case) for the first time. Worked closely with users to gain realtime feedback to always be improving the experience.",
+				"I also made sure to support as many websites possible (ESPN, Yahoo, NFL, CBS, Sleeper), which helped me learn how professional websites operate to the core and how to scrape the data properly."
 			]
 		},
 		{

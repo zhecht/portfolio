@@ -53,7 +53,6 @@ function change_tab(el, tab) {
 
 	if (el.parentNode.id == "projects_nav") {
 		if (PROJ_TAB) {
-			document.getElementById(PROJ_TAB).style.display = "none";	
 		}
 		PROJ_TAB = tab;
 	} else if (el.parentNode.id == "skills_nav") {
@@ -63,7 +62,6 @@ function change_tab(el, tab) {
 		SKILLS_TAB = tab;
 	} else {
 		if (CURR_TAB) {
-			document.getElementById(CURR_TAB).style.display = "none";	
 		}
 		CURR_TAB = tab;
 	}
@@ -76,39 +74,49 @@ function change_tab(el, tab) {
 	}
 }
 
-var nav = document.getElementsByClassName("nav");
-for (var i = 0; i < nav.length; ++i) {
-	var btns = nav[i].getElementsByTagName("button");
-	for (var j = 0; j < btns.length; ++j) {
-		btns[j].onclick = (function(tab) {
-			return function() {
-				change_tab(this, tab);
-			}
-		})(btns[j].innerText);
+const btns = document.querySelector("#nav").getElementsByTagName("button");
+for (btn of btns) {
+	btn.onclick = function(event) {
+		const activeBtn = document.querySelector("#nav button.active");
+		document.getElementById(activeBtn.innerText.toLowerCase()).style.display = "none";
+		activeBtn.classList.remove("active");
+		this.classList.add("active");
+		document.getElementById(this.innerText.toLowerCase()).style.display = "flex";
 	}
 }
 
 var project_types = ["personal", "professional"];
 
-for (var t = 0; t < project_types.length; ++t) {
-	var proj_el = document.getElementById(project_types[t]);
-	var descriptions = proj_el.getElementsByClassName("desc");
-	for (var i = 0; i < descriptions.length; ++i) {
-		var btns = descriptions[i].getElementsByTagName("button");
-		btns[0].className = "disabled";
-		btns[0].onclick = (function(proj_data) {
-			return function() {
-				move_pic("prev", this, proj_data);
-			}
-		})(data[project_types[t]][i]);
+let slideIndexes = {};
+for (const project of document.getElementsByClassName("project")) {
+	const title = project.id;
+	slideIndexes[title] = 1;
+	showSlides(title, 1);
+}
 
-		if (data[project_types[t]][i]["pics"].length == 1) {
-			btns[1].className = "disabled";
-		}
-		btns[1].onclick = (function(proj_data) {
-			return function() {
-				move_pic("next", this, proj_data);
-			}
-		})(data[project_types[t]][i]);
+function plusSlides(el, n) {
+	showSlides(el.parentNode.id, slideIndexes[el.parentNode.id] += n);
+}
+
+function currentSlide(title, n) {
+	showSlides(title, slideIndexes[title] = n);
+}
+
+function showSlides(projTitle, n) {
+	const projEl = document.getElementById(projTitle);
+	let i;
+	let slides = projEl.getElementsByClassName("slides");
+	let dots = projEl.getElementsByClassName("miniPic");
+	let captionText = projEl.getElementsByClassName("caption")[0];
+	if (n > slides.length) { slideIndexes[projTitle] = 1 }
+	if (n < 1) { slideIndexes[projTitle] = slides.length }
+	for (i = 0; i < slides.length; i++) {
+	  slides[i].style.display = "none";
 	}
+	for (i = 0; i < dots.length; i++) {
+	  dots[i].classList.remove("active");
+	}
+	slides[slideIndexes[projTitle]-1].style.display = "block";
+	dots[slideIndexes[projTitle]-1].classList.add("active");
+	captionText.innerText = dots[slideIndexes[projTitle]-1].querySelector("img").alt;
 }

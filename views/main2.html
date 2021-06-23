@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Zack Hecht Portfolio</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="/static/css/main.css" type="text/css">
+	</head>
+	<body>
+		<div id="header">
+			<div id="title">
+				<h1>Zack Hecht</h1>
+				<h4>zhecht7@gmail.com</h4>
+			</div>
+			<div id="links_div">
+				<a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">LinkedIn Profile</a>
+				<a href="https://github.com/zhecht?tab=repositories" target="_blank">GitHub Profile</a>
+			</div>
+		</div>
+		<div id="content">
+			<div id="main_nav" class="nav">
+				<button>Resume</button>
+				<button class="active">About</button>
+				<button>Skills</button>
+				<button>Projects</button>
+			</div>
+			<div id="about">
+				<div class="description">
+					Hi, welcome to my page!
+				</div>
+				<div><img src="/static/pictures/profile.jpeg" width="300" /></div>
+				<div class="description">
+					I graduated from the University of Michigan College of Engineering and have a few years of experience in the industry as a Software Engineer.
+					<br><br>
+					Armed with a never-ending curiosity, an eagerness to learn, and a passion to create, Computer Science was a route I never doubted following.
+					<br><br>
+					In my free time, I love to listen to records, garden, and play with my dood, <a href="https://i.imgur.com/GBAOuob.jpg">Bonzo</a>. I also enjoy integrating programming into my hobbies, interests, and daily life as much as possible. I find that this is a great way to keep my love to code, while also learning new technology and frameworks along the way.
+				</div>
+			</div>
+			<div id="projects">
+				<div id="projects_nav" class="nav"  style="display: none;">
+					<button class="active">Personal</button>
+					<button>Professional</button>
+				</div>
+				{{ all_projects | safe }}
+			</div>
+			<div id="skills">
+				<div id="skills_nav" class="nav"  style="display: none;">
+					<button class="active">Languages</button>
+					<button>OS</button>
+					<button>DBs</button>
+					<button>Other</button>
+				</div>
+				<div style="font-size: 14px; margin-bottom: 20px">
+					<i>Ranked on experience, last use, and overall knowledge</i>
+				</div>
+				{{ skills_table | safe }}
+			</div>
+			<div id="resume">
+				<embed src="/static/resume.pdf" />
+			</div>
+		</div>
+		<script>
+			var data = {{project_json | tojson | safe}};
+		</script>
+		<script src="/static/js/main.js"></script>
+	</body>
+</html>

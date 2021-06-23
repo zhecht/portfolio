@@ -1,37 +1,39 @@
 {
-	"languages": [
-		"Python\t5",
-		"Perl\t5",
-		"C/C++\t3",
-		"Embedded C\t1",
-		"Android\t1",
-		"Java\t2",
-		"HTML\t5",
-		"CSS\t4",
-		"JavaScript\t4",
-		"JQuery\t3"
+	"Languages": [
+		{"data": "Python", "rating": 5},
+		{"data": "Perl", "rating": 5},
+		{"data": "C/C++", "rating": 4},
+		{"data": "Embedded C", "rating": 2},
+		{"data": "Android", "rating": 1},
+		{"data": "Java", "rating": 3},
+		{"data": "Scala", "rating": 5},
+		{"data": "HTML", "rating": 5},
+		{"data": "CSS", "rating": 4},
+		{"data": "JavaScript", "rating": 4},
+		{"data": "JQuery", "rating": 3}
 	],
-	"os": [
-		"Linux (Ubuntu)\t4",
-		"Linux (Debian)\t5",
-		"Linux (ElementaryOS)\t5",
-		"Linux (Kali)\t2",
-		"MacOS\t4",
-		"Windows 7 & 10\t3"
+	"Other": [
+		{"data": "Flask", "rating": 5},
+		{"data": "Jinja", "rating": 5},
+		{"data": "Vue.js", "rating": 3},
+		{"data": "QT/QML", "rating": 3},
+		{"data": "Ember", "rating": 2},
+		{"data": "Angular", "rating": 2}
 	],
-	"dbs": [
-		"Cassandra\t4",
-		"PostgreSQL\t3",
-		"MySQL\t3",
-		"Lucene\t2",
-		"Elastic Search\t3"
+	"Operating Systems": [
+		{"data": "Linux (Ubuntu)", "rating": 5},
+		{"data": "Linux (Debian)", "rating": 5},
+		{"data": "Linux (ElementaryOS)", "rating": 4},
+		{"data": "Linux (Kali)", "rating": 2},
+		{"data": "MacOS", "rating": 5},
+		{"data": "Windows 7&10", "rating": 3}
 	],
-	"other": [
-		"Flask\t5",
-		"Jinja\t5",
-		"Vue.js\t3",
-		"Qt/QML\t3",
-		"Ember\t2",
-		"Angular\t2"
+	"Databases": [
+		{"data": "Cassandra", "rating": 4},
+		{"data": "PostreSQL", "rating": 3},
+		{"data": "Ingres", "rating": 5},
+		{"data": "MySQL", "rating": 3},
+		{"data": "Lucene", "rating": 2},
+		{"data": "Elastic Search", "rating": 4}
 	]
 }
