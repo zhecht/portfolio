@@ -81,7 +81,11 @@ for (btn of btns) {
 		document.getElementById(activeBtn.innerText.toLowerCase()).style.display = "none";
 		activeBtn.classList.remove("active");
 		this.classList.add("active");
-		document.getElementById(this.innerText.toLowerCase()).style.display = "flex";
+
+		const clickedDiv = document.getElementById(this.innerText.toLowerCase());
+		clickedDiv.style.display = "flex";
+		// scroll to top of page
+		clickedDiv.scrollTo(0,0);
 	}
 }
 

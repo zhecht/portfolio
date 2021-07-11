@@ -8,35 +8,39 @@
 	<body>
 		<div id="header">
 			<div><h1>Zack Hecht</h1></div>
-			<div id="linksDiv">
-				<a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">
-					<img src="/static/pictures/linkedin.png" alt="LinkedIn" />
-				</a>
-				<a href="https://github.com/zhecht?tab=repositories" target="_blank">
-					<img src="/static/pictures/github.png" alt="Github" />
-				</a>
-			</div>
-			<h4>zhecht7@gmail.com</h4>
 			<div id="nav">
 				<button class="active">About</button>
 				<button>Skills</button>
 				<button>Projects</button>
 				<button>Resume</button>
 			</div>
+			<div id="bottomHeader">
+				<div id="linksDiv">
+					<a href="https://www.linkedin.com/in/zack-hecht-b47253b5" target="_blank">
+						<img src="/static/pictures/linkedin.png" alt="LinkedIn" />
+					</a>
+					<a href="https://github.com/zhecht?tab=repositories" target="_blank">
+						<img src="/static/pictures/github.png" alt="Github" />
+					</a>
+				</div>
+				<h4>zhecht7@gmail.com</h4>
+			</div>
 		</div>
 		<div id="content">
 			
 			<div id="about">
-				<div>
-					Hi, welcome to my page!
+				<div style="width: 75%; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+					<h1>Welcome to my page!</h1>
+					<div class="description">
+						I graduated from the University of Michigan College of Engineering in 2016 and have since gained invaluable experience as a Junior and now Senior Engineer over various fields of Software.
+						<br><br>
+						Armed with a never-ending curiosity, an eagerness to learn, and a passion to create, Computer Science was a route I never doubted following.
+						<br><br>
+						In my free time, I love to listen to records, garden, and play with my dood, <a href="https://i.imgur.com/GBAOuob.jpg">Bonzo</a>. I also enjoy integrating programming into my hobbies, interests, and daily life as much as possible. I find that this is a great way to keep my love for coding, while learning new technology and frameworks along the way.
+					</div>
 				</div>
-				<div><img src="/static/pictures/profile.jpeg"/></div>
-				<div class="description">
-					I graduated from the University of Michigan College of Engineering in 2016 and have since gained invaluable experience as a Junior and now Senior Engineer in numerous fields of Software.
-					<br><br>
-					Armed with a never-ending curiosity, an eagerness to learn, and a passion to create, Computer Science was a route I never doubted following.
-					<br><br>
-					In my free time, I love to listen to records, garden, and play with my dood, <a href="https://i.imgur.com/GBAOuob.jpg">Bonzo</a>. I also enjoy integrating programming into my hobbies, interests, and daily life as much as possible as you will notice from my Projects page. I find that this is a great way to keep my love for coding, while learning new technology and frameworks along the way.
+				<div class="imgDiv">
+					<img src="/static/pictures/profile.jpeg"/>
 				</div>
 			</div>
 			<div id="projects">
@@ -91,14 +95,9 @@
 						<h2>{{skillType}}</h2>
 						{% for skillRow in skills[skillType] %}
 							<div class="skillDiv">
-								<div>{{skillRow["data"]}}</div>
-								<div class="ratingDiv">
-								{% for rating in range(skillRow["rating"]) %}
-									<svg width="14" height="14" viewBox="0 0 512 512" xml:space="preserve" style="padding: 0px 1px;"><polygon fill="#FFEA00" stroke="#C1AB60" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 29.274,197.007 188.165,173.919 "></polygon></svg>
-								{% endfor %}
-								{% for rating in range(skillRow["rating"], 5) %}
-									<svg width="14" height="14" viewBox="0 0 512 512" xml:space="preserve" style="padding: 0px 1px;"><polygon fill="#D2D2D2" stroke="#686868" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 29.274,197.007 188.165,173.919 "></polygon></svg>
-								{% endfor %}
+								<div class="meterDiv">
+									<span>{{skillRow["data"]}}</span>
+									<meter value="{{skillRow['rating']}}" min="0" max="5"></meter>
 								</div>
 							</div>
 						{% endfor %}

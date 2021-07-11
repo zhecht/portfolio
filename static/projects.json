@@ -18,8 +18,7 @@
 			"summary": [
 				"Created the first country-wide ballot dropbox and dropoff locator for the Nov 2020 General Election. Scrapped location data from State Gov't sites but mostly had to go County-by-County.",
 				"After the election, tracked Restrictive bills that proposed to weaken or obstruct voting powers.",
-				"Experience Gained: First time working with mapping architecture (ArgGIS, Map Tile Serving, Openmaps, and more). Maintained 2 instances from Linode to serve map tiles to my site.",
-				"Optimization Example: To limit the amount of map requests (and $$), I downloaded midpoint coordinates from all the States. Everytime a user scrolls, instead of querying for the current location, I instead used the Haversine equation to calculate the 5 nearest States."
+				"Experience Gained: First time working with mapping architecture (ArgGIS, Map Tile Serving, Openmaps, and more). Maintained 2 instances from Linode to serve map tiles to my site."
 			]
 		},
 		{

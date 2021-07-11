@@ -14,13 +14,12 @@ body {
 	position: relative;
 	flex-direction: column;
 	align-items: center;
-	height: 100vh;
+	width: 20%; height: 100vh;
 	color: rgb(232, 230, 227);
 	background-color: rgba(0, 0, 0, 0);
 	background-image: linear-gradient(to left, rgb(27, 30, 31), rgb(50, 55, 57));
 	box-shadow: 4px 0 4px 0 rgba(0,0,0,0.2);
 	transition: 0.3s;
-	padding: 0 1rem;
 }
 
 #header h1 {
@@ -31,30 +30,41 @@ body {
 	width: 50px;
 }
 
+#bottomHeader {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+
+
 #skills {
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
 
-#skills h2 {
-	text-align: center;
-}
-
 .skill {
 	width: 40%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 }
 
 .skillDiv {
 	display: flex;
-	padding: 0.25rem 0;
+	width: calc(100% / 3);
 }
 
 .skillDiv div:nth-child(1) {
 	text-align: center;
 }
 
-.skillDiv div {
-	width: 50%;
+.skill h2 {
+	text-align: center;
+	width: 100%;
+	margin-top: 0;
 }
 
 .slideshow {
@@ -128,18 +138,12 @@ body {
 	width: 100%;
 }
 
-#linksdiv {
-	display: flex;
-}
-
 .active,
 .miniPic:hover {
   opacity: 1;
 }
 
 #nav {
-	position: absolute;
-	bottom: 0;
 	display: flex;
 	flex-direction: column;
 	width: 100%;
@@ -164,32 +168,47 @@ body {
 	cursor: pointer;
 }
 
-#resume, #about, #projects, #skills, #professional, #school {
+#resume, #projects, #skills, #professional, #school {
 	display: none;
 	width: 100%;
 }
 
 #about {
 	display: flex;
-	flex-direction: column;
+}
+
+#about h1 {
+	text-align: center;
+}
+
+#about .imgDiv {
+	width: 25%;
 	justify-content: center;
+	display: flex;
 	align-items: center;
 }
 
 #about img {
 	border-radius: 100%;
-	margin: 20px 0;
 	width: 300px;
 }
 
 
 #about .description {
-	width: 50%;
 	text-align: center;
+	width: 80%;
 }
 
 #about .description div {
 	width: 90%;
+}
+
+.meterDiv {
+	width: 100%;
+}
+
+meter {
+	width: 80%;
 }
 
 #projects {
