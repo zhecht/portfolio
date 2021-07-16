@@ -72,16 +72,18 @@
 			]
 		},
 		{
-			"title": "MalWear",
+			"title": "Favorites",
 			"pics": [
-				""
+				"favorites_main.png",
+				"favorites_tv.png",
+				"favorites_lyrics.png"
 			],
 			"pics_desc": [
-				""
+				"Main Page",
+				"TV Favorites",
+				"Favorite Lyrics"
 			],
 			"summary": [
-				"Developed an online ecommerce store to sell personal Chanel products.",
-				"This project provided insight into safe security practices and invaluable retail experience."
 			]
 		}
 	],

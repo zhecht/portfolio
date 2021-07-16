@@ -2,10 +2,10 @@
 	"Languages": [
 		{"data": "Python", "rating": 5},
 		{"data": "Perl", "rating": 5},
-		{"data": "C/C++", "rating": 4},
+		{"data": "C/C++", "rating": 3},
 		{"data": "Embedded C", "rating": 2},
 		{"data": "Android", "rating": 1},
-		{"data": "Java", "rating": 3},
+		{"data": "Java", "rating": 4},
 		{"data": "Scala", "rating": 5},
 		{"data": "HTML", "rating": 5},
 		{"data": "CSS", "rating": 4},
